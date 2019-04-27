@@ -1,21 +1,2 @@
-\subsection{Technical Process}
-
-\paragraph{Data Attributes}
-Newspaper3k, a python package, was used to extract the article data from raw html.  Golang was leveraged for its
-concurrency capabilities to more effectively request the html data from the urls, given there were more than a quarter-million
-incidents.
-
-\paragraph{Preprocessing}
-\cite{latexcompanion}
-Further pre-processing of the set included removing stop words, puncuation, and numerics using the \texttt{gensim} python package. Some of this data is still relevant to the context of each article, however their importance for evaluation of this dataset was considered less critical.
-
-\paragraph{Metrics}
-\cite{knuthwebsite}
-Vector representations of words for the corpus were generated using the GloVe model developed at Stanford.  The 300
-dimensional vector representation appeared to provide the most differentiated analysis. The GloVe model assumes that
-the meanings of words can be derived from the ratios of their occurence with other words, and the model here was developed
-using a crawl of Wikipedia in 2014 and Gigaword 5. The Gigaword 5 corpus includes articles from various news organizations
-over the span of five years and would contribute greatly to semantic word similarity in these vector representations.
-
 \paragraph{Methods}
 Random Forests, Perceptron, SVM, Neural Net
