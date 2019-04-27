@@ -83,6 +83,7 @@ def clean_data(loan_data: pd.DataFrame) -> pd.DataFrame:
             loan_data[col] = loan_data[col].str.replace("%", "").astype(float) / 100
     # Only finite loans that are paid off or defaulted
     loans = loan_data[np.isfinite(loan_data['loan_amnt'])]
+    del loan_data
     loans.emp_length = loans.emp_length.apply(emp_length)
     loans = loans[loans.loan_status.isin(['Fully Paid', 'Charged Off', 'Default'])]
     loans = remove_missing_columns(loans)
@@ -107,6 +108,7 @@ def clean_data(loan_data: pd.DataFrame) -> pd.DataFrame:
     del loans['application_type']
     del loans['sub_grade']
     data = preprocessing.scale(loans)
+    del loans
     data = np.append(data, grades.toarray(), axis=1)
     data = np.append(data, states.toarray(), axis=1)
     data = np.append(data, zips.toarray(), axis=1)
