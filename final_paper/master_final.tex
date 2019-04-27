@@ -1,0 +1,67 @@
+\documentclass[11pt]{article}
+
+\usepackage{fullpage} % Package to use full page
+\usepackage{parskip} % Package to tweak paragraph skipping
+\usepackage{tikz} % Package for drawing
+\usepackage{amsmath}
+\usepackage{hyperref}
+\usepackage{graphicx}
+\usepackage{authblk}
+\usepackage[square,sort,comma,numbers]{natbib}
+\usepackage{multirow}
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\setlength{\textheight}{9in}
+\setlength{\topmargin}{-0.600in}
+\setlength{\headheight}{0.2in}
+\setlength{\headsep}{0.250in}
+\setlength{\footskip}{0.5in}
+\flushbottom
+\setlength{\textwidth}{6.5in}
+\setlength{\oddsidemargin}{0in}
+\setlength{\evensidemargin}{0in}
+\setlength{\columnsep}{2pc}
+\setlength{\parindent}{1em}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\title{Lending Club and Default Prediction Models}
+\author{Kevin Reilly}
+\author{John}
+\affil{University of Utah -- Machine Learning}
+\date{\today}
+
+\begin{document}
+
+\maketitle
+
+\begin{abstract}
+	\input{abstract.tex}
+\end{abstract}
+
+\section{Introduction}
+
+\input{objective.tex}
+
+\input{data_set.tex}
+
+\input{technical.tex}
+
+\section{Results}\label{sec:Results}
+
+\input{results.tex}
+
+\section{Conclusions}
+
+\input{conclusions.tex}
+
+
+\nocite{*}
+
+\newpage{}
+
+\bibliographystyle{ieeetr}
+
+\bibliography{bibliography}
+
+\end{document}
