@@ -9,7 +9,7 @@ from itertools import product
 from lib.utils import train
 import matplotlib.pyplot as plt
 from mpl_toolkits.mplot3d import Axes3D
-from sklearn.linear_model import Perceptron, LogisticRegression
+from sklearn.linear_model import Perceptron, LogisticRegression, SGDClassifier
 from sklearn.ensemble import RandomForestClassifier
 
 
@@ -27,6 +27,11 @@ print("Data Retrieved...")
 
 X_train, X_test, Y_train, Y_test = train_test_split(X, Y, train_size=.9)
 
+
+print("State Vector Machine, SGD")
+cls = SGDClassifier(loss="hinge", alpha=0.0001, max_iter=5)
+results = train(cls, X_train, X_test, Y_train, Y_test)
+pp.pprint(results)
 print("Logistic Regression")
 cls = LogisticRegression(solver='newton-cg')
 results = train(cls, X_train, X_test, Y_train, Y_test)
