@@ -1,3 +1,21 @@
 \subsection{Objective}
 
-The objective is to evaluate various methods for determining risk of default.  
+The objective is to evaluate various methods for determining risk of default.  The methods we will evaluate are the State Vector Machines, Perceptrons, Random Forests, Logistic Regression, and Neural Nets. Several metrics will be used to evaluate against.  Since the data is already heavily weighed towards lower default rates (~20\%), simple precision metrics will not likely provide much insight into the models ability to correctly identify loans that are fully paid and loans that will default. 
+
+\subsubsection{Metrics}
+Sensitivity is the ratio of true positives against false negatives.  It measures the number of actual positive examples that were improperly classified as negative. 
+\begin{equation}
+sensitivity = \frac{TP}{TP + FN}
+\end{equation}
+Accuracy is the total correctly identified negatives and positives.  
+\begin{equation}
+accuracy = \frac{TN + TP}{N}
+\end{equation}
+Precision, in this case, measures the number of defaults that were modeled to be fully paid against the number correctly identified. 
+\begin{equation}
+precision = \frac{TP}{TP+FP}
+\end{equation}
+The F-score is the harmonic mean of the sensitivity and precision.  It can be used as a single measure of performance of the positive class. This will be the ultimate metric for which we will evaluate the total score for the test. 
+\begin{equation}
+F-Score = 2\frac{precision * recall}{precision + recall}
+\end{equation}
