@@ -22,8 +22,8 @@ with open('Y.dat', 'rb') as yr:
     Y = pickle.load(yr)
 print("Data Retrieved...")
 #
-# X = X[:10000, :]
-# Y = Y[:10000]
+# X = X[:100000, :]
+# Y = Y[:100000]
 
 X_train, X_test, Y_train, Y_test = train_test_split(X, Y, train_size=.9)
 
@@ -80,7 +80,6 @@ for dw in product(depth, width):
     train_err[index_row, index_col] = 1 - output.history['acc'][0]
 fig = plt.figure()
 ax = fig.add_subplot(111, projection='3d')
-# Z = np.g
 X, Y = np.meshgrid(depth, width)
 ax.plot_wireframe(X, Y, train_err.T, color='blue', label='train')
 ax.plot_wireframe(X, Y, test_err.T, color='red', label='test')

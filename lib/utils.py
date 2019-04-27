@@ -85,6 +85,7 @@ def clean_data(loan_data: pd.DataFrame) -> pd.DataFrame:
     loans = loan_data[np.isfinite(loan_data['loan_amnt'])]
     loans.emp_length = loans.emp_length.apply(emp_length)
     loans = loans[loans.loan_status.isin(['Fully Paid', 'Charged Off', 'Default'])]
+    loans = remove_missing_columns(loans)
     loans = loans.dropna()
     grades = OneHotEncoder().fit_transform(loans.grade.values.reshape(-1, 1))
     states = OneHotEncoder().fit_transform(loans.addr_state.values.reshape(-1, 1))
@@ -112,7 +113,7 @@ def clean_data(loan_data: pd.DataFrame) -> pd.DataFrame:
     data = np.append(data, ho.toarray(), axis=1)
     data = np.append(data, purpose.toarray(), axis=1)
     data = np.append(data, application_type.toarray(), axis=1)
-    #data = np.append(data, verify.toarray(), axis=1)
+    data = np.append(data, verify.toarray(), axis=1)
     data = np.append(data, sub_grade.toarray(), axis=1)
     return data, Y
 
@@ -138,3 +139,10 @@ def train(cls, X_train, X_test, Y_train, Y_test):
     test["fully_paid"] = scores(Y_test, y_test, pos_label=1)
     test["default"] = scores(Y_test, y_test, pos_label=0)
     return dict(test=test, train=train)
+
+
+def remove_missing_columns(loan_data: pd.DataFrame) -> pd.DataFrame:
+    percent_missing = loan_data.isnull().sum() * 100 / len(loan_data)
+    missing_value_df = pd.DataFrame({'column_name': loan_data.columns,
+                                     'percent_missing': percent_missing})
+    return loan_data.drop(missing_value_df[missing_value_df.percent_missing > 10].column_name, axis=1)
