@@ -150,6 +150,5 @@ data_cols = [
 #,"settlement_date"
 #,"settlement_amount"
 #,"settlement_percentage"
-#
-    ,"settlement_term"
+#,"settlement_term"
 ]
