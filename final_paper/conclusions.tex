@@ -1,4 +1,13 @@
 \subsubsection{Learnings}
 
+Even with the large volume of data available, there still remains a fairly large amount of error in predicting the outcome of extending these personal loans. The best results achieved here gave about 81\% accuracy in predicting the outcome of extending a loan (or an F1-score of about 89\% of predicting a loan with full pay-off,) with approx. 1.2 million data points and 77 features.
+
+It appears that feature selection is the largest factor in predicting the outcome of these loans, and it is likely that meta-data very significant to the outcomes is unavailable in this data (non-measurable 'real-world' factors.)
+
 \subsection{Future Steps}
 
+These results were impacted significantly by choosing different feature subsets, and there is quite a bit of room to explore this further. We plan to focus further experimentation on comparing feature subsets to determine which subsets contribute the most to accurate prediction, and most importantly the F1 score for predicting default loans. This should also reduce memory and computation requirements, and reduce noise in the data.
+
+After trimming these models, we would also like to consider regional data in future reviews. This will likely take the form of creating region-specific data sets to create distinct models.
+
+Improving this model could potentially lead to options for strong financial gains, though these results also need to be compared to existing strong models to determine viability.

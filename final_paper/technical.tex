@@ -1,2 +1,28 @@
-\paragraph{Methods}
-Random Forests, Perceptron, SVM, Neural Net
+\subsection{Methods}
+
+We compared multiple methods for predicting loan outcome, including the following:
+
+\begin{enumerate}
+    \item Random Forests (from sklearn.ensemble)
+
+        An ensemble learning method that utilized bagged decision trees to classify data. We utilized a forest of 100 trees created on Gini index with no trimming or pruning.
+    
+    \item Support Vector Machines, or SVM (from sklearn.linear\_model)
+
+        A linear classification algorithm which utilizes stochastic gradient descent to minimize loss. We created an SVM model using hinge loss and a regularization of $1 e^{-4}$ run over 5 epochs.
+
+    \item Logistic Regression (from sklearn.linear\_model)
+
+        A statistical model utilizing (stochastic) gradient descent to maximize the probability of selecting positive examples. We utilized sklearn's newton-cg solver with $L_2$-norm penalty over 100 epochs.
+
+    \item Single Perceptron (from sklearn.linear\_model)
+
+        A linear binary classification model which optimizes its linear coefficients by repeatedly predicting sample outputs and comparing to actual outputs to adjust. We implemented sklearn's perceptron model with the L2 penalty setting, and otherwise default settings (which results in 5 epochs.)
+
+    \item Keras Neural Network (from tensorflow.keras)
+
+        We ran a number of settings through keras, modifying depth and width of the model from 3 to 9 hidden layers of depth, and from 6 to 100 neurons of width per hidden layer. A dense connections were utilized, with RELU activation and he-uniform initialization on each hidden layer, and a softmax activation on the output layer. The model used the default adam optimizer with sparse categorical cross-entropy loss over 5 epochs for each depth/width setting.
+
+        Our final results were extracted from a network of 3 hidden layers with 20 neurons of width each.
+
+\end{enumerate}

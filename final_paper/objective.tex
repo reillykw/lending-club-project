@@ -1,21 +1,23 @@
 \subsection{Objective}
 
-The objective is to evaluate various methods for determining risk of default.  The methods we will evaluate are the State Vector Machines, Perceptrons, Random Forests, Logistic Regression, and Neural Nets. Several metrics will be used to evaluate against.  Since the data is already heavily weighed towards lower default rates (~20\%), simple precision metrics will not likely provide much insight into the models ability to correctly identify loans that are fully paid and loans that will default. 
+The objective is to evaluate various methods for determining risk of default. Improved ability to detect these risky loans would translate directly to earning potential by presenting an algorithm for 'cherry-picking' the most profitable investments while minimizing risk of loss. Machine learning presents itself as an ideal candidate for building such a model due to the vast quantity of data available, and the tenuous relationship between the data and the subject matter. We utilized over 3 years of data, including over a million records approaching 100 features per record which would be difficult to process using traditional methods. Also, few of the available features are direct indicators of financial responsibility but may be the subject of human bias in financial decision making. Machine learning techniques remove this element of human bias and will generally self-adjust to the true correlation between the feature values and the loan outcomes.
+
+The methods we will evaluate are the State Vector Machines, Perceptron, Random Forests, Logistic Regression, and Artificial Neural Nets. Several metrics will be used to evaluate against, listed below.  Since the data is already heavily weighed towards lower default rates (~20\%), simple precision metrics will not likely provide much insight into the models ability to correctly identify loans that are fully paid and loans that will default. We will therefore be measuring measures of prevision and recall/sensitivity more heavily as they reflect the models ability to correctly and accurately identify those loans which are most likely to default.
 
 \subsubsection{Metrics}
-Sensitivity is the ratio of true positives against false negatives.  It measures the number of actual positive examples that were improperly classified as negative. 
+Recall represents the models ability to avoid false negative classification (i.e does it find all true positives,) as the ratio of true positives against false negatives.
 \begin{equation}
-sensitivity = \frac{TP}{TP + FN}
+recall = \frac{TP}{TP + FN}
 \end{equation}
-Accuracy is the total correctly identified negatives and positives.  
+Accuracy is the total correctly identified negatives and positives.
 \begin{equation}
 accuracy = \frac{TN + TP}{N}
 \end{equation}
-Precision, in this case, measures the number of defaults that were modeled to be fully paid against the number correctly identified. 
+Precision represents the models ability to avoid false positive classification (i.e. does it avoid negative results,) represented as a ratio of true positives over all samples predicted positive.
 \begin{equation}
 precision = \frac{TP}{TP+FP}
 \end{equation}
-The F-score is the harmonic mean of the sensitivity and precision.  It can be used as a single measure of performance of the positive class. This will be the ultimate metric for which we will evaluate the total score for the test. 
+The F-score (F-metric, F1 score) is the harmonic mean of the sensitivity and precision.  It can be used as a single measure of performance of the positive class. This will be the ultimate metric for which we will evaluate the total score for the test as it evenly weights the models ability to positively identify {\it all and only} true positive examples.
 \begin{equation}
-F-Score = 2\frac{precision * recall}{precision + recall}
+F-Score = 2\cdot\frac{precision \cdot recall}{precision + recall}
 \end{equation}

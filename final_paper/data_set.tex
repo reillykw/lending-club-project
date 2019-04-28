@@ -6,6 +6,8 @@ The dataset is provided by Lending Club on an ongoing basis for all the loans gr
 
 Columns with text values were removed. Columns related to the loan status were also removed.  Every column less than half full were removed and rows with empty values were either filled with mean data or removed entirely depending on their likely effect on outcome.  
 
+Of note, although regional data may have been relevant to results, including it proved far too resource intensive and so were excluded in these analyses.
+
 \subsubsection{Transform}
 
 Categorical variables were replaced with their one-hot coded columns.  Zip and state columns were removed simply for their size when encoded. All other numerical variables were encoding around their unit norm. 
